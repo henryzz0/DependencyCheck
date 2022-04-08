@@ -122,7 +122,7 @@ jobs:
     needs: build
     steps:
       - name: Download coverage reports
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: code-coverage-report
       - name: Run codacy-coverage-reporter
@@ -156,7 +156,7 @@ jobs:
         with:
           ref: release
       - name: Download release build
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: archive-release
       - name: Build Docker Image
@@ -185,7 +185,7 @@ jobs:
           VERSION=$( mvn help:evaluate -Dexpression=project.version -q -DforceStdout )
           echo "VERSION=$VERSION" >> $GITHUB_ENV
       - name: Download release build
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: archive-release
       - name: Create Release
@@ -253,7 +253,7 @@ jobs:
         with:
           ref: release
       - name: Download Site
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: archive-site
           path: target/staging
